@@ -1,0 +1,63 @@
+# Disable confirmations
+set delete
+set delete_untag
+unset confirmappend
+
+# General
+set date_format="%y%m%d-%H%M%S"
+set include=yes
+set pager_index_lines = 8
+set sleep_time = 0
+
+# IMAP/SMTP
+set imap_check_subscribed
+set imap_keepalive = 300
+set mailcap_path    = ~/.mutt/mailcap
+set smtp_authenticators = ""
+unset imap_passive
+
+# Message headers
+ignore *
+unignore from: date subject to cc
+unignore x-mailer:
+unignore x-mailing-list: posted-to:
+hdr_order From To Cc Date
+
+# Messages
+alternative_order text/plain text/html
+auto_view text/html
+set auto_tag = yes
+set editor="vim -c 'set textwidth=0 wrapmargin=0'"
+set mail_check = 30
+set mail_check_stats
+set mark_old=no
+set menu_scroll=yes
+set message_cachedir=~/.cache/mutt/messages
+set move = no 
+set query_command = "khard email --parsable %s"
+set text_flowed=yes
+set timeout = 30
+source "~/.mutt/purgecache.sh '$message_cachedir'|"
+
+# Sidebar
+set sidebar_delim_chars = '/.'
+set sidebar_divider_char = '|'
+set sidebar_folder_indent = no
+set sidebar_format = '%B%?F? [%F]?%* %?N?%N/?%S'
+set sidebar_indent_string = '  '
+set sidebar_new_mail_only = no
+set sidebar_next_new_wrap = no
+set sidebar_short_path = no
+set sidebar_sort_method = 'unsorted'
+set sidebar_visible = yes
+set sidebar_width = 20
+
+# Sorting
+set sort = threads
+set sort_aux = reverse-last-date-received
+set sort_browser = date
+
+# Accounts - the last will be the default
+## Disroot
+source ~/.mutt/Disroot
+folder-hook $folder 'source ~/.mutt/Disroot'

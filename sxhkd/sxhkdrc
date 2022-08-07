@@ -1,0 +1,6 @@
+
+Print
+  maim --select | tee ~/pics/ss/$(date +%s).png | xclip -selection clipboard -t image/png
+
+shift + Print
+  maim | tee ~/pics/ss/$(date +%s).png | xclip -selection clipboard -t image/png	
